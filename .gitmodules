@@ -1,0 +1,6 @@
+[submodule "Kotlin"]
+	path = Kotlin
+	url = https://github.com/jaurelio1/Kotlin.git
+[submodule "android-basics-kotlin-words-app"]
+	path = android-basics-kotlin-words-app
+	url = https://github.com/jaurelio1/Kotlin.git
