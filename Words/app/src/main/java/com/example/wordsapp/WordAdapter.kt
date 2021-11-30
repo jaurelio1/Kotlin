@@ -85,7 +85,7 @@ class WordAdapter(private val letterId: String, context: Context) :
         holder.button.text = item
 
         holder.button.setOnClickListener {
-            val queryUrl: Uri = Uri.parse("${DetailActivity.SEARCH_PREFIX}${item}")
+            val queryUrl: Uri = Uri.parse("${WordListFragment.SEARCH_PREFIX}${item}")
             /**
              * A ACTION_VIEW é uma intent genérica que aceita um URI, no seu caso, um endereço da Web. O sistema,
              * então, saberá que precisa processar essa intent abrindo o URI no navegador da Web do usuário.

@@ -23,11 +23,25 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.Button
 import androidx.annotation.RequiresApi
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Adapter for the [RecyclerView] in [MainActivity].
  */
+/*O nome da atividade que você quer mostrar é
+especificado por DetailActivity::class.java.
+Um objeto DetailActivity é criado internamente.
+Uma intent é simplesmente um conjunto de instruções.
+
+val intent = Intent(context, WordListFragment::class.java)
+
+um extra é um dado, como um número ou uma string,
+que recebe um nome para ser recuperado depois
+
+intent.putExtra(WordListFragment.LETTER, holder.button.text.toString())
+*/
+
 class LetterAdapter :
     RecyclerView.Adapter<LetterAdapter.LetterViewHolder>() {
 
@@ -65,18 +79,9 @@ class LetterAdapter :
         holder.button.text = item.toString()
 
         holder.button.setOnClickListener{
-            val context = holder.view.context
-            /*O nome da atividade que você quer mostrar é
-            especificado por DetailActivity::class.java.
-            Um objeto DetailActivity é criado internamente.
-            Uma intent é simplesmente um conjunto de instruções.*/
-            val intent = Intent(context, DetailActivity::class.java)
-
-            /*um extra é um dado, como um número ou uma string,
-             que recebe um nome para ser recuperado depois*/
-            intent.putExtra(DetailActivity.LETTER, holder.button.text.toString())
-
-            context.startActivity(intent)
+            val action = LetterListFragmentDirections.actionLetterListFragmentToWordListFragment(letter = holder.button.text.toString())
+            holder.view.findNavController().navigate(action)
+        /*the part commented above was here*/
         }
     }
 
